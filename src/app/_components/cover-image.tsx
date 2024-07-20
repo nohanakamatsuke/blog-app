@@ -8,10 +8,10 @@ type Props = {
   slug?: string;
 };
 
-const CoverImage = ({ title, src, slug }: Props) => {
+const CoverImage = ({ title,slug }: Props) => {
   const image = (
     <Image
-      src={src}
+      src="/assets/blog/dynamic-routing/coverImage.JPG"
       alt={`Cover Image for ${title}`}
       className={cn("shadow-sm w-full", {
         "hover:shadow-lg transition-shadow duration-200": slug,
