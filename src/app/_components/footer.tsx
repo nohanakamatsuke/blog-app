@@ -1,5 +1,5 @@
-import { EXAMPLE_PATH } from "@/lib/constants";
-import {FaInstagram, FaGithub} from "react-icons/fa6";
+
+import {FaInstagram, FaGithub} from "react-icons/fa";
 import Link from "next/link";
 
 export function Footer() {
