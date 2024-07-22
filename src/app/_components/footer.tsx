@@ -1,6 +1,5 @@
-
-import {FaInstagram, FaGithub} from "react-icons/fa";
 import Link from "next/link";
+import {FaInstagram, FaGithub} from "react-icons/fa6";
 
 export function Footer() {
   return (
@@ -18,7 +17,7 @@ export function Footer() {
         </div>
       </footer>
     
-  );
+  )
 }
 
 export default Footer;
