@@ -8,7 +8,7 @@ type Props = {
   slug?: string;
 };
 
-const CoverImage = ({ title,slug }: Props) => {
+const CoverImage = ({ title, src, slug }: Props) => {
   const image = (
     <Image
       src="/assets/blog/dynamic-routing/coverImage.JPG"

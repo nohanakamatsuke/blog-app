@@ -24,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="nkapplication-TileColor" content="#000000" />
         <meta
-          name="msapplication-config"
+          name="nkapplication-config"
           content="/favicon/browserconfig.xml"
         />
         <meta name="theme-color" content="#000" />
