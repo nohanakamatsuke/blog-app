@@ -7,7 +7,7 @@ type Props = {
 export function HeroPost({ title, coverImage }: Props) {
   return (
     <section>
-      <div className="md:mb-16">
+      <div>
         <CoverImage title={title} src={coverImage} />
       </div>
     </section>
