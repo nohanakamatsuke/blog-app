@@ -1,6 +1,5 @@
 import { config } from "dotenv";
 config();
-import { databaseId } from "@/app/blog/page";
 import { Client } from "@notionhq/client";
 import {
   BlockObjectResponse,
@@ -87,7 +86,7 @@ export const getBlocks = cache(async (blockID: string): Promise<Block[]> => {
         acc.push(curr);
       }
       return acc;
-    }, []),
+    }, [])
   );
 });
 
