@@ -15,10 +15,7 @@ export default function Index() {
     <main>
       <Container>
         <Intro />
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-        />
+        <HeroPost title={heroPost.title} coverImage={heroPost.coverImage} />
         <Footer />
       </Container>
     </main>

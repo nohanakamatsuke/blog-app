@@ -1,8 +1,9 @@
 import { Fragment } from "react";
-import styles from "../blog/[slug]/posts.module.css";
-import { getDatabase, getPage, getBlocks } from "../../lib/notion";
-import Link from "next/link";
 import Head from "next/head";
+import { getDatabase, getPage, getBlocks } from "../../lib/notion.ts";
+import Link from "next/link";
+import { databaseId } from "./page.js";
+import styles from "../posts/[slug]/posts.module.css";
 
 export const Text = ({ text }) => {
   if (!text) {

@@ -21,6 +21,18 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/blog/page.js", "src/lib/notion.ts", "src/app/blog/_app.js", "src/app/blog/[id].js", "src/app/blog/_app.js", "src/app/_components/posts-text.js", "src/app/blog/[slug]/page.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/blog/page.js",
+    "src/lib/notion.ts",
+    "src/app/blog/_app.js",
+    "src/app/blog/[id].js",
+    "src/app/blog/_app.js",
+    "src/app/_components/posts-text.js",
+    "src/app/blog/[slug]/page.js"
+  ],
   "exclude": ["node_modules"]
 }

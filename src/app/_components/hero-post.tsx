@@ -4,10 +4,7 @@ type Props = {
   coverImage: string;
 };
 
-export function HeroPost({
-  title,
-  coverImage,
-}: Props) {
+export function HeroPost({ title, coverImage }: Props) {
   return (
     <section>
       <div className="md:mb-16">
