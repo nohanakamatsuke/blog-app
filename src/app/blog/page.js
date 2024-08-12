@@ -7,8 +7,6 @@ import { getDatabase } from "@/lib/notion";
 import styles from "./index.module.css";
 import { Text } from "../_components/posts-text";
 
-export const databaseId = process.env?.DATABASE_ID ?? "DATABASE_ID";
-
 async function getPosts() {
   const database = await getDatabase();
 
@@ -16,6 +14,7 @@ async function getPosts() {
 }
 
 export default async function Blog() {
+  const databaseId = process.env.DATABASE_ID;
   const posts = await getPosts();
 
   return (
@@ -52,7 +51,7 @@ export default async function Blog() {
                   month: "short",
                   day: "2-digit",
                   year: "numeric",
-                },
+                }
               );
               const slug = post.properties?.Slug?.rich_text[0].text.content;
               return (
