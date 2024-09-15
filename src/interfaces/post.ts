@@ -1,27 +1,3 @@
-// import { type Author } from "./author";
-
-// export type Post = {
-//   id: string;
-//   slug: string;
-//   title: string;
-//   date: string;
-//   last_edited_time: string;
-//   properties: {
-//     slug?: {
-//       rich_text?: Array<{
-//         plain_text: string;
-//       }>;
-//     };
-//   };
-//   coverImage?: string;
-//   author?: Author;
-//   excerpt?: string;
-//   content?: string;
-//   preview?: boolean;
-// };
-
-// interfaces/post.ts
-
 import { type Author } from "./author";
 
 interface NotionProperty {

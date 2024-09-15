@@ -36,7 +36,7 @@ const BlogPost: FC<BlogPostProps> = async ({ params }) => {
   const content = await getPageContent(post.id);
   const markdown = content.map((block) => block.parent).join("\n");
 
-  // タイトルの取得方法を修正
+  // タイトルの取得方法修正
   const title = post.properties?.Name?.title?.[0]?.plain_text || "Untitled";
 
   return (
