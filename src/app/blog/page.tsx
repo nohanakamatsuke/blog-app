@@ -4,14 +4,8 @@ import { Intro } from "../_components/intro";
 import Container from "@/app/_components/container";
 import Footer from "../_components/footer";
 import Image from "next/image";
-import { getDatabase } from "@/lib/notion";
 import styles from "./index.module.css";
-import { type Post } from "../../interfaces/post";
-
-export async function getPosts(): Promise<Post[]> {
-  const database = await getDatabase();
-  return database;
-}
+import { getPosts } from "@/lib/api";
 
 const Blog: FC = async () => {
   const posts = await getPosts();
