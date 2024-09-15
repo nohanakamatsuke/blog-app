@@ -1,54 +1,76 @@
 import { FC } from "react";
-import { notFound } from "next/navigation";
-import { getDatabase, getPageContent } from "@/lib/notion";
+import Link from "next/link";
+import { Intro } from "../_components/intro";
 import Container from "@/app/_components/container";
-import Footer from "@/app/_components/footer";
-import { Intro } from "@/app/_components/intro";
-import ReactMarkdown from "react-markdown";
-import { Post } from "@/interfaces/post";
+import Footer from "../_components/footer";
+import Image from "next/image";
+import { getDatabase } from "@/lib/notion";
+import styles from "./index.module.css";
+import { type Post } from "../../interfaces/post";
 
-interface BlogPostProps {
-  params: {
-    slug: string;
-  };
+export async function getPosts(): Promise<Post[]> {
+  const database = await getDatabase();
+  return database;
 }
 
-export async function generateStaticParams() {
-  const database = await getDatabase();
-  return database.map((post) => ({
-    slug: post.properties?.slug?.rich_text?.[0]?.plain_text || post.id,
-  }));
-}
-
-const BlogPost: FC<BlogPostProps> = async ({ params }) => {
-  const { slug } = params;
-  const database = await getDatabase();
-  const post = database.find(
-    (post) =>
-      post.properties?.slug?.rich_text?.[0]?.plain_text === slug ||
-      post.id === slug
-  ) as Post | undefined;
-
-  if (!post) {
-    notFound();
-  }
-
-  const content = await getPageContent(post.id);
-  const markdown = content.map((block) => block.parent).join("\n");
-
-  // タイトルの取得方法修正
-  const title = post.properties?.Name?.title?.[0]?.plain_text || "Untitled";
+const Blog: FC = async () => {
+  const posts = await getPosts();
 
   return (
     <Container>
       <Intro />
-      <article className="container mx-auto md:w-[700px] mt-10">
-        <h1 className="text-3xl font-bold mb-5">{title}</h1>
-        <ReactMarkdown>{markdown}</ReactMarkdown>
-      </article>
+      <main className="container">
+        <section className="flex justify-center flex-col md:flex-row !items-center md:items-start md:gap-10 gap-5 md:m-20">
+          <Image
+            src="/assets/blog/dynamic-routing/vietnam.jpg"
+            alt=""
+            className="rounded-full"
+            width={250}
+            height={250}
+          />
+          <div className="flex flex-col md:gap-5 justify-center text-center md:text-left">
+            <h1 className="md:text-3xl text-xl font-serif mb-3">
+              野に咲く花のブログ
+            </h1>
+            <p className="text-sm md:text-base font-serif">
+              日々のつれづれです
+            </p>
+          </div>
+        </section>
+
+        <section className="container mx-auto md:w-[700px] md:mt-20 mt-5">
+          <h2 className="font-bold text-gray-600 mb-5 pb-5 uppercase border-b border-gray-300 text-sm tracking-wide">
+            all posts
+          </h2>
+          <ol>
+            {posts.map((post) => {
+              const date = new Date(post.last_edited_time).toLocaleString(
+                "en-US",
+                {
+                  month: "short",
+                  day: "2-digit",
+                  year: "numeric",
+                }
+              );
+
+              const slug =
+                post.properties?.slug?.rich_text?.[0]?.plain_text || post.id;
+              return (
+                <li key={post.id} className={styles.post}>
+                  <h3 className={styles.postTitle}>
+                    <Link href={`/blog/${slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className={styles.postDescription}>{date}</p>
+                  <Link href={`/blog/${slug}`}>Read post →</Link>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      </main>
       <Footer />
     </Container>
   );
 };
 
-export default BlogPost;
+export default Blog;
