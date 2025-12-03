@@ -1,63 +1,84 @@
-# A statically generated blog example using Next.js, Markdown, and TypeScript
+# Personal Blog
 
-This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
+Next.js + Notion API で構築した個人ブログサイトです。
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates) feature using Markdown files as the data source.
+## 🌐 デモ
 
-The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
+[https://nohana-hp.vercel.app/](https://nohana-i9b9lchpu-nohanakamatsukes-projects.vercel.app/)
 
-To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
+## 🛠️ 使用技術
 
-## Demo
+- **Frontend**: Next.js 14, React, TypeScript
+- **Styling**: Tailwind CSS
+- **CMS**: Notion API
+- **Deployment**: Vercel
+- **Other**: notion-to-md, react-markdown
 
-[https://next-blog-starter.vercel.app/](https://next-blog-starter.vercel.app/)
+## ✨ 特徴
 
-## Deploy your own
+- Notion をCMSとして使用し、記事管理が簡単
+- マークダウン形式でブログ記事を表示
+- レスポンシブデザイン対応
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/blog-starter)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/blog-starter&project-name=blog-starter&repository-name=blog-starter)
-
-### Related examples
-
-- [WordPress](/examples/cms-wordpress)
-- [DatoCMS](/examples/cms-datocms)
-- [Sanity](/examples/cms-sanity)
-- [TakeShape](/examples/cms-takeshape)
-- [Prismic](/examples/cms-prismic)
-- [Contentful](/examples/cms-contentful)
-- [Strapi](/examples/cms-strapi)
-- [Agility CMS](/examples/cms-agilitycms)
-- [Cosmic](/examples/cms-cosmic)
-- [ButterCMS](/examples/cms-buttercms)
-- [Storyblok](/examples/cms-storyblok)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent](/examples/cms-kontent)
-- [Umbraco Heartcore](/examples/cms-umbraco-heartcore)
-- [Builder.io](/examples/cms-builder-io)
-- [TinaCMS](/examples/cms-tina/)
-- [Enterspeed](/examples/cms-enterspeed)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example blog-starter blog-starter-app
+## 📁 プロジェクト構成
+```
+blog-app/
+├── app/
+│   ├── _components/     # 再利用可能なコンポーネント
+│   ├── about/          # Aboutページ
+│   └── page.tsx        # トップページ
+├── lib/
+│   ├── api.ts          # ブログ記事取得のロジック
+│   └── notion.ts       # Notion API連携
+└── public/             # 静的ファイル
 ```
 
+## 🚀 ローカル開発
+
+### 1. リポジトリをクローン
 ```bash
-yarn create next-app --example blog-starter blog-starter-app
+git clone https://github.com/nohanakamatsuke/blog-app.git
+cd blog-app
 ```
 
+### 2. 依存関係をインストール
 ```bash
-pnpm create next-app --example blog-starter blog-starter-app
+npm install
 ```
 
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+### 3. 環境変数を設定
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+`.env.local` ファイルを作成し、以下を追加：
+```
+NOTION_TOKEN=your_notion_integration_token
+DATABASE_ID=your_notion_database_id
+```
 
-# Notes
+### 4. 開発サーバーを起動
+```bash
+npm run dev
+```
 
-`blog-starter` uses [Tailwind CSS](https://tailwindcss.com) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3).
+http://localhost:3000 でアクセス
+
+## 📝 Notion の設定
+
+1. [Notion Integrations](https://www.notion.so/my-integrations) でインテグレーションを作成
+2. データベースをインテグレーションに共有
+3. トークンとデータベースIDを `.env.local` に設定
+
+## 🎨 カスタマイズ
+
+- デザイン: `app/globals.css` と Tailwind CSS
+- コンテンツ: Notion データベースで記事を管理
+- About ページ: `app/about/page.tsx` で編集
+
+## 📄 ライセンス
+
+MIT
+
+## 👤 作成者
+
+Nohana Kamatsuke
+- Website: https://nohana-hp.vercel.app/
+- GitHub: [@nohanakamatsuke](https://github.com/nohanakamatsuke)
